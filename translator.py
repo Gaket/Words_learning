@@ -3,12 +3,13 @@
 from __future__ import print_function
 import re
 import json
+from dictEn import *
 from pprint import pprint
 from grab import Grab
 
 #from dictDe import *
 
-def tranlsate(word, key, lan1='en', lan2='ru', alt=True, syn=True):
+def translate(word, key, lan1='en', lan2='ru', alt=True, syn=True):
     """Prints the number of counts, word, translation, and example
     from lan1 to lan2 according to Translate.Google."""
     # First, write down a translation in some auxiliary txt file
@@ -44,7 +45,7 @@ def tranlsate(word, key, lan1='en', lan2='ru', alt=True, syn=True):
             print ('\n')
 
 
-def word_count_dict(filename, dictList=de50):
+def word_count_dict(filename, dictList=enTop100):
     """Returns a dictionary with key being number of counts
     and value being a list of words with that key.
     dictList is an optional argument: it is to eliminate
@@ -72,5 +73,5 @@ def print_top(filename, n=10):
     
     mydict = word_count_dict(filename)
     mydict_keys = sorted(mydict, reverse=True)[0:n]
-    [[tranlsate(word, key) for word in mydict[key]] for key in mydict_keys]
+    [[translate(word, key) for word in mydict[key]] for key in mydict_keys]
 
